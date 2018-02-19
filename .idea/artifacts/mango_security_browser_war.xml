@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mango-security-browser:war">
+    <output-path>$PROJECT_DIR$/mango-security-browser/target</output-path>
+    <root id="archive" name="mango-security-browser.war">
+      <element id="artifact" artifact-name="mango-security-browser:war exploded" />
+    </root>
+  </artifact>
+</component>

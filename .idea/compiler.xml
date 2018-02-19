@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mango-security-app" />
+        <module name="mango-security-browser" />
+        <module name="mango-security-core" />
+        <module name="mango-security-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mango-security" target="1.8" />
+      <module name="mango-security-app" target="1.8" />
+      <module name="mango-security-browser" target="1.8" />
+      <module name="mango-security-core" target="1.8" />
+      <module name="mango-security-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

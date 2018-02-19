@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="mango-security-browser:war exploded">
+    <output-path>$PROJECT_DIR$/mango-security-browser/target/mango-security-browser</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="mango-security-browser" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/mango-security-browser/target/mango-security-browser/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="mango-security-browser/web/Web" />
+    </root>
+  </artifact>
+</component>
