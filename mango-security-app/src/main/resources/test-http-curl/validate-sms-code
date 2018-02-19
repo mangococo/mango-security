@@ -1,0 +1,7 @@
+curl -i -X POST\
+ -H "Content-Type:application/x-www-form-urlencoded"\
+ -H "Authorization:Basic bWFuZ286bWFuZ29zZWNyZXQ="\
+ -H "deviceId:oneplus"\
+ -d "mobile=18992391127"\
+ -d "smsCode=082515"\
+ "http://192.168.75.1:8060//authentication/mobile"

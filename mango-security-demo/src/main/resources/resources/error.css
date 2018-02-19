@@ -1,0 +1,37 @@
+body { font-size: 14px; padding: 2% 0 30px; line-height: 1.5; color: #666; font-family: 'Hiragino Sans GB', 'Microsoft YaHei', SimHei, 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+h1, h2 { font-weight: normal; margin: 10px 0; line-height: 1.2; }
+h1 { font-size: 36px; color: #333; }
+h2 { font-size: 16px; }
+i { display: inline-block; vertical-align: middle; }
+strong { font-weight: normal; }
+.mb30 { margin-bottom: 30px; }
+.tac { text-align: center; }
+.b span { padding: 0 20px; }
+.b .hr { border-left: 1px dashed #ddd; border-right: 1px dashed #ddd; }
+.fl { float: left; display: inline; }
+.auto { margin-left: auto; margin-right: auto; }
+.fr { float: right; }
+.ms { list-style: none; }
+.db { display: block; }
+.m, .n { display: inline-block; *display: inline; *zoom: 1; vertical-align: top; }
+.n { width: 166px; }
+.n-1 { border-top: 1px solid #4f71f6; border-bottom: 1px solid #4f71f6; height: 6px; margin: 45px 0; position: relative; }
+.n-1 span, .n-1 i { position: absolute; height: 0; width: 0; }
+.n1-1, .n1-1 i { border-top: 4px dashed transparent; border-right: 7px dashed transparent; }
+.n1-1 { top: -9px; right: 0; border-left: 7px solid #4f71f6; border-bottom: 4px solid #4f71f6; }
+.n1-1 i { left: -8px; top: -4px; border-left: 7px solid #fff; border-bottom: 4px solid #fff; }
+.n1-2, .n1-2 i { border-left: 7px dashed transparent; border-bottom: 4px dashed transparent; }
+.n1-2 { top: 6px; left: 0; border-top: 4px solid #4f71f6; border-right: 7px solid #4f71f6; }
+.n1-2 i { top: -3px; left: -4px; border-top: 4px solid #fff; border-right: 7px solid #fff; }
+.n-2 { border-top: 1px dashed #e65d50; margin-top: 50px; color: #e65d50; }
+.n-2 span { margin-bottom: 3px; }
+.n-2 strong { display: inline-block; background-color: #e65d50; color: #fff; padding: 0 1em; line-height: 20px; padding: 0 10px; border-radius: 10px; -webkit-border-radius: 10px; }
+.n2-in { margin-top: -18px; display: inline-block; background-color: #fff; }
+.m { width: 140px; margin-bottom: 20px; }
+.m span, .m strong { display: block; font-weight: normal; font-style: normal; margin-bottom: 5px; }
+.m strong { color: #4f71f6; }
+.m-em strong { color: #e65d50; }
+.bt { display: inline-block; padding: 0 15px; text-align: center; text-decoration: none; line-height: 30px; background-color: #4f71f6; color: #fff; border-radius: 2px; -webkit-border-radius: 2px; }
+.bt:hover { background-color: #3456db; }
+.m-hd { height: 100px; width: 100px; margin-bottom: 15px; }
+.vam { vertical-align: middle; }
