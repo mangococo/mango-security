@@ -17,5 +17,4 @@
             <version>${mango.security.version}</version>
         </dependency>
     </dependencies>
-
 </project>
