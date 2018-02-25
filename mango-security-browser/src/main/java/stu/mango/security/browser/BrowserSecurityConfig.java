@@ -122,7 +122,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                 .and()
                 .and()
             .logout()
-                .logoutUrl("/signOut")
+                .logoutUrl(securityProperties.getBrowser().getSignOutUrl())
                 .logoutSuccessHandler(logoutSuccessHandler)
                 .deleteCookies("JSESSIONID") // 用户登出时删除指定 Cookie
                 .and()

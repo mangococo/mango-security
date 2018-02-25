@@ -4,7 +4,7 @@ public class BrowserProperties {
     /**
      * 登录页，若不设置，默认为 default-signin.html
      */
-    private  String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;
+    private  String signInUrl = SecurityConstants.DEFAULT_SIGN_IN_PAGE_URL;
 
     /**
      * 注册页，若不设置，默认为 default-signup.html
@@ -14,7 +14,7 @@ public class BrowserProperties {
     /**
      * 退出也，若不设置，默认为空
      */
-    private String signOutUrl;
+    private String signOutUrl = SecurityConstants.DEFAULT_SIGN_OUT_URL;
 
     /**
      * 登录成功后的响应类型，若不设置，默认为返回json格式的用户信息
@@ -33,12 +33,12 @@ public class BrowserProperties {
 
     private SessionProperties session = new SessionProperties();
 
-    public String getLoginPage() {
-        return loginPage;
+    public String getSignInUrl() {
+        return signInUrl;
     }
 
-    public void setLoginPage(String loginPage) {
-        this.loginPage = loginPage;
+    public void setSignInUrl(String signInUrl) {
+        this.signInUrl = signInUrl;
     }
 
     public LoginType getLoginType() {

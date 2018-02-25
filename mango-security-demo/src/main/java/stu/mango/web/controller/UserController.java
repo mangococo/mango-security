@@ -49,8 +49,12 @@ public class UserController {
         // 无论是注册用户还是绑定用户动作，都会拿到一个用户唯一标识
         String userId = user.getUsername();
 
+        logger.info("用户" + userId + "请求注册");
+
         // 将userId作为用户唯一标识插到user_connection表中，将user_info与 social_info 关联起来
         providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+
+        logger.info("用户" + userId + "注册成功");
     }
 
     @GetMapping("/me")

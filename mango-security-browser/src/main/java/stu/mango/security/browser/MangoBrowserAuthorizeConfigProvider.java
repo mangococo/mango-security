@@ -23,7 +23,7 @@ public class MangoBrowserAuthorizeConfigProvider implements AuthorizeConfigProvi
         BrowserProperties browser = securityProperties.getBrowser();
 
         authorizeRequests
-                .antMatchers(browser.getLoginPage(),
+                .antMatchers(browser.getSignInUrl(),
                         browser.getSignUpUrl(),
                         browser.getSignOutUrl(),
                         securityProperties.getBrowser().getSession().getSessionInvalidUrl()
