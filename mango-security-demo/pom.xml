@@ -11,16 +11,16 @@
     <artifactId>mango-security-demo</artifactId>
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>stu.mango.security</groupId>-->
-            <!--<artifactId>mango-security-browser</artifactId>-->
-            <!--<version>${mango.security.version}</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>stu.mango.security</groupId>
-            <artifactId>mango-security-app</artifactId>
+            <artifactId>mango-security-browser</artifactId>
             <version>${mango.security.version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>stu.mango.security</groupId>-->
+            <!--<artifactId>mango-security-app</artifactId>-->
+            <!--<version>${mango.security.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

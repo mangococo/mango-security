@@ -54,6 +54,6 @@ public class DemoUserDetailService implements UserDetailsService, SocialUserDeta
 
         return new SocialUser(userId, password,
                 true, true, true, true
-                , AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER")); // 将用","隔开的字符串转换为权限集合; 只有含有ROLE_USER的用户才可申请授权
+                , AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN,ROLE_USER")); // 将用","隔开的字符串转换为权限集合; 只有含有ROLE_USER的用户才可申请授权
     }
 }

@@ -15,8 +15,7 @@ import org.springframework.security.web.session.SessionInformationExpiredStrateg
 import org.springframework.social.security.SpringSocialConfigurer;
 import stu.mango.security.core.authentication.AbstractChannelSecurityConfig;
 import stu.mango.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
-import stu.mango.security.core.properties.BrowserProperties;
-import stu.mango.security.core.properties.SecurityConstants;
+import stu.mango.security.core.authorize.AuthorizeConfigManager;
 import stu.mango.security.core.properties.SecurityProperties;
 import stu.mango.security.core.properties.SessionProperties;
 import stu.mango.security.core.validate.code.ValidateCodeAuthenticationConfig;
@@ -41,16 +40,18 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
     private final SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
 
     private final LogoutSuccessHandler logoutSuccessHandler;
-    /**
-     * 用户查询服务，用于记住用户功能下用户再次访问时查询用户信息
-     */
+
+    private final AuthorizeConfigManager authorizeConfigManager;
+
     private final UserDetailsService userDetailsService;
 
     /**
      * @param securityProperties 应用配置
-     * @param dataSource 数据库源，由应用提供
+     * @param dataSource 数据库源，由使用者提供
      * @param mangoSpringSocialConfigurer spring social 相关配置
      * @param validateCodeAuthenticationConfig 验证码校验相关配置
+     * @param userDetailsService 用户查询服务
+     * @param authorizeConfigManager 请求授权配置管理器
      */
     @Autowired
     public BrowserSecurityConfig(SecurityProperties securityProperties,
@@ -62,7 +63,7 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
                                  ValidateCodeAuthenticationConfig validateCodeAuthenticationConfig,
                                  InvalidSessionStrategy invalidSessionStrategy,
                                  SessionInformationExpiredStrategy sessionInformationExpiredStrategy,
-                                 LogoutSuccessHandler logoutSuccessHandler) {
+                                 LogoutSuccessHandler logoutSuccessHandler, AuthorizeConfigManager authorizeConfigManager) {
 
         super(mangoAuthenticationFailureHandler, mangoAuthenticationSuccessHandler);
         this.securityProperties = securityProperties;
@@ -74,24 +75,29 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
         this.invalidSessionStrategy = invalidSessionStrategy;
         this.sessionInformationExpiredStrategy = sessionInformationExpiredStrategy;
         this.logoutSuccessHandler = logoutSuccessHandler;
+        this.authorizeConfigManager = authorizeConfigManager;
     }
 
+    /**
+     * 持久性令牌库，系统默认为数据库存储
+     */
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
+
         tokenRepository.setDataSource(dataSource);
 
         /*
         JdbcTokenRepositoryImpl 中自定义了Token存储表的操作语句，可使用启动时自动创建表
          */
-        tokenRepository.setCreateTableOnStartup(false);
+        tokenRepository.setCreateTableOnStartup(
+                securityProperties.getBrowser().isCreateTokenRepositoryTableOnStartup());
 
         return tokenRepository;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        BrowserProperties browser = securityProperties.getBrowser();
         SessionProperties session = securityProperties.getBrowser().getSession();
 
         applyPasswordAuthenticationConfig(http);
@@ -118,23 +124,12 @@ public class BrowserSecurityConfig extends AbstractChannelSecurityConfig {
             .logout()
                 .logoutUrl("/signOut")
                 .logoutSuccessHandler(logoutSuccessHandler)
-                .deleteCookies("JSESSIONID")
-
-                // 用户登出时删除指定 Cookie
-                .and()
-            .authorizeRequests()
-                .antMatchers(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
-                            SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,
-                            browser.getLoginPage(),
-                            browser.getSignUpUrl(),
-                            browser.getSignOutUrl(),
-                            session.getSessionInvalidUrl(),
-                            "/user/register",
-                            SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*").permitAll() // 除此之外需要身份认证
-                .anyRequest().authenticated()
+                .deleteCookies("JSESSIONID") // 用户登出时删除指定 Cookie
                 .and()
             .csrf().disable() // 跨站伪造防护功能
         ;
+
+        authorizeConfigManager.config(http.authorizeRequests());
     }
 
 }

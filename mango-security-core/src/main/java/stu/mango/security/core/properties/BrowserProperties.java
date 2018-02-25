@@ -26,6 +26,11 @@ public class BrowserProperties {
      */
     private int rememberMeSeconds = 3600;
 
+    /**
+     * 在第一次启动时创建 token 存储表，默认为 false
+     */
+    private boolean createTokenRepositoryTableOnStartup = false;
+
     private SessionProperties session = new SessionProperties();
 
     public String getLoginPage() {
@@ -74,5 +79,13 @@ public class BrowserProperties {
 
     public void setSignOutUrl(String signOutUrl) {
         this.signOutUrl = signOutUrl;
+    }
+
+    public boolean isCreateTokenRepositoryTableOnStartup() {
+        return createTokenRepositoryTableOnStartup;
+    }
+
+    public void setCreateTokenRepositoryTableOnStartup(boolean createTokenRepositoryTableOnStartup) {
+        this.createTokenRepositoryTableOnStartup = createTokenRepositoryTableOnStartup;
     }
 }

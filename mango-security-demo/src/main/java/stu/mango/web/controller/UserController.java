@@ -130,9 +130,6 @@ public class UserController {
      */
     @PostMapping
     public User create(@Valid @RequestBody User user, BindingResult errors) {
-        //
-        //
-
         if (errors.hasErrors()) {
             errors.getAllErrors().forEach(e -> System.out.println(e.getDefaultMessage()));
         }
@@ -160,6 +157,6 @@ public class UserController {
 
     @DeleteMapping("/{id:\\d+}")
     public void delete(@PathVariable(name = "id") String id) {
-        System.out.println("Delete " + id +" Success!!!");
+        logger.info("Delete " + id +" Success!!!");
     }
 }
