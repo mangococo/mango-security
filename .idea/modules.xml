@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mango-security.iml" filepath="$PROJECT_DIR$/mango-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/mango-security-app/mango-security-app.iml" filepath="$PROJECT_DIR$/mango-security-app/mango-security-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mango-security-authorize/mango-security-authorize.iml" filepath="$PROJECT_DIR$/mango-security-authorize/mango-security-authorize.iml" />
       <module fileurl="file://$PROJECT_DIR$/mango-security-browser/mango-security-browser.iml" filepath="$PROJECT_DIR$/mango-security-browser/mango-security-browser.iml" />
       <module fileurl="file://$PROJECT_DIR$/mango-security-core/mango-security-core.iml" filepath="$PROJECT_DIR$/mango-security-core/mango-security-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/mango-security-demo/mango-security-demo.iml" filepath="$PROJECT_DIR$/mango-security-demo/mango-security-demo.iml" />

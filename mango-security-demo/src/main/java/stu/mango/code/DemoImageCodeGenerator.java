@@ -2,10 +2,7 @@ package stu.mango.code;
 
 import org.springframework.web.context.request.ServletWebRequest;
 import stu.mango.security.core.validate.code.ValidateCode;
-import stu.mango.security.core.validate.code.image.ImageCode;
 import stu.mango.security.core.validate.code.ValidateCodeGenerator;
-
-import javax.servlet.http.HttpServletRequest;
 
 // @Component("imageCodeGenerator")
 public class DemoImageCodeGenerator implements ValidateCodeGenerator {

@@ -1,5 +1,6 @@
 package stu.mango.security.core.authorize;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import stu.mango.security.core.properties.SecurityConstants;
  * 安全系统模块所需要的基本授权配置
  */
 @Component
+@Order(Integer.MIN_VALUE)
 public class MangoSecurityAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Override

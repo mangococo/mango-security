@@ -16,6 +16,11 @@
             <artifactId>mango-security-browser</artifactId>
             <version>${mango.security.version}</version>
         </dependency>
+        <dependency>
+            <groupId>stu.mango.security</groupId>
+            <artifactId>mango-security-authorize</artifactId>
+            <version>${mango.security.version}</version>
+        </dependency>
         <!--<dependency>-->
             <!--<groupId>stu.mango.security</groupId>-->
             <!--<artifactId>mango-security-app</artifactId>-->

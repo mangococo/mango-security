@@ -18,6 +18,8 @@
         <module>mango-security-app</module>
         <module>mango-security-browser</module>
         <module>mango-security-demo</module>
+        <module>authorize</module>
+        <module>mango-security-authorize</module>
     </modules>
 
     <!-- Spring-io 版本管理 -->

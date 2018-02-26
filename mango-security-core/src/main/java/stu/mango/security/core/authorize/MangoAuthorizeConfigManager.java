@@ -5,7 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * 收集系统内的所有授权配置，并遍历地将其加到系统安全模块中。
@@ -13,16 +13,16 @@ import java.util.Set;
 @Component
 public class MangoAuthorizeConfigManager implements AuthorizeConfigManager {
 
-    private final Set<AuthorizeConfigProvider> authorizeConfigProviders;
+    private final List<AuthorizeConfigProvider> authorizeConfigProviders;
 
     @Autowired
-    public MangoAuthorizeConfigManager(Set<AuthorizeConfigProvider> authorizeConfigProviders) {
-        this.authorizeConfigProviders = authorizeConfigProviders;
+    public MangoAuthorizeConfigManager(List<AuthorizeConfigProvider> authorizeConfigProviders) {
+        this .authorizeConfigProviders = authorizeConfigProviders;
     }
 
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
         authorizeConfigProviders.forEach(provider -> provider.config(authorizeRequests));
-        authorizeRequests.anyRequest().authenticated();
+        // authorizeRequests.anyRequest().authenticated();
     }
 }

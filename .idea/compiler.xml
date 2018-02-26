@@ -6,15 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="app" />
+        <module name="browser" />
+        <module name="core" />
+        <module name="demo" />
         <module name="mango-security-app" />
+        <module name="mango-security-authorize" />
         <module name="mango-security-browser" />
         <module name="mango-security-core" />
         <module name="mango-security-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="app" target="1.8" />
+      <module name="authorize" target="1.8" />
+      <module name="browser" target="1.8" />
+      <module name="core" target="1.8" />
+      <module name="demo" target="1.8" />
       <module name="mango-security" target="1.8" />
       <module name="mango-security-app" target="1.8" />
+      <module name="mango-security-authorize" target="1.8" />
       <module name="mango-security-browser" target="1.8" />
       <module name="mango-security-core" target="1.8" />
       <module name="mango-security-demo" target="1.8" />
