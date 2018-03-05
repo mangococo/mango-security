@@ -1,5 +1,6 @@
-package stu.mango.security.browser;
+package stu.mango.security.browser.authorize;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,14 +22,19 @@ public class MangoBrowserAuthorizeConfigProvider implements AuthorizeConfigProvi
     }
 
     @Override
-    public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
+    public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
         BrowserProperties browser = securityProperties.getBrowser();
 
         authorizeRequests
                 .antMatchers(browser.getSignInUrl(),
                         browser.getSignUpUrl(),
-                        browser.getSignOutUrl(),
                         securityProperties.getBrowser().getSession().getSessionInvalidUrl()
-                ).permitAll(); // 除此之外需要身份认证
+                ).access("permitAll()"); // 除此之外需要身份认证
+
+        if (StringUtils.isNotBlank(browser.getSignOutUrl())) {
+            authorizeRequests.antMatchers(browser.getSignOutUrl()).permitAll();
+        }
+
+        return false;
     }
 }

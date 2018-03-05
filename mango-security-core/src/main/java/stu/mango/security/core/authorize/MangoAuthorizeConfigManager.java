@@ -22,7 +22,24 @@ public class MangoAuthorizeConfigManager implements AuthorizeConfigManager {
 
     @Override
     public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
-        authorizeConfigProviders.forEach(provider -> provider.config(authorizeRequests));
-        // authorizeRequests.anyRequest().authenticated();
+        final boolean[] existAnyRequestConfig = {false};
+        final String[] existAnyRequestConfigName = {null};
+
+        authorizeConfigProviders.forEach(provider -> {
+            boolean currentIsAnyRequestConfig = provider.config(authorizeRequests);
+            if (existAnyRequestConfig[0] && currentIsAnyRequestConfig) {
+                throw new RuntimeException("重复的anyRequest配置:" + existAnyRequestConfigName[0] + ","
+                        + provider.getClass().getSimpleName());
+            } else if (currentIsAnyRequestConfig) {
+                existAnyRequestConfig[0] = true;
+                existAnyRequestConfigName[0] = provider.getClass().getName();
+            }
+
+        });
+
+        if (!existAnyRequestConfig[0]) {
+            authorizeRequests.anyRequest().authenticated();
+        }
+
     }
 }

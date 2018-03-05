@@ -10,10 +10,12 @@ import stu.mango.security.core.properties.SecurityConstants;
 public class MangoAppAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Override
-    public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
+    public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
         authorizeRequests.antMatchers(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_OPEN_ID,
                         SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,
                         SecurityConstants.DEFAULT_SIGN_UP_URL_APP
         ).permitAll();
+
+        return false;
     }
 }

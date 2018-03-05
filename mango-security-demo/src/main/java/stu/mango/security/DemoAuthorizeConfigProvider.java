@@ -11,7 +11,9 @@ import stu.mango.security.core.authorize.AuthorizeConfigProvider;
 public class DemoAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Override
-    public void config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
+    public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
         authorizeRequests.anyRequest().access("@rbacService.hasPermission(request, authentication)");
+
+        return true;
     }
 }
