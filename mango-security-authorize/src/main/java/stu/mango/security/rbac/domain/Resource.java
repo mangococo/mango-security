@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import stu.mango.security.rbac.dto.ResourceInfo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,13 +16,14 @@ import java.util.Set;
  * 需要控制权限的资源，以业务人员能看懂的name呈现.实际关联到一个或多个url上。
  * 
  * 树形结构。
- * 
+ *
  * @author zhailiang
  *
  */
 @Entity
-public class Resource {
+public class Resource implements Serializable {
 
+	private static final long serialVersionUID = -5121873236375315466L;
 	/**
 	 * 数据库表主键
 	 */
@@ -54,7 +56,7 @@ public class Resource {
 	/**
 	 * 实际需要控制权限的url
 	 */
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	private Set<String> urls;
 	/**
 	 * 父资源
@@ -72,7 +74,7 @@ public class Resource {
 		ResourceInfo result = new ResourceInfo();
 		BeanUtils.copyProperties(this, result);
 		Set<Long> resourceIds = admin.getAllResourceIds();
-		
+
 		List<ResourceInfo> children = new ArrayList<>();
 		for (Resource child : getChilds()) {
 			if(StringUtils.equals(admin.getUsername(), "admin") || 
@@ -81,7 +83,6 @@ public class Resource {
 			}
 		}
 		result.setChildren(children);
-
 		return result;
 	}
 	
@@ -110,7 +111,7 @@ public class Resource {
 		this.name = name;
 	}
 
-	public Set<String> getUrls() {
+	Set<String> getUrls() {
 		return urls;
 	}
 

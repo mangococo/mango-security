@@ -1,5 +1,6 @@
 package stu.mango.security.rbac.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -16,7 +17,9 @@ import org.springframework.data.annotation.CreatedDate;
  * 角色资源关系表
  */
 @Entity
-public class RoleResource {
+public class RoleResource implements Serializable {
+
+	private static final long serialVersionUID = -5363293084620889455L;
 
 	/**
 	 * 数据库表主键

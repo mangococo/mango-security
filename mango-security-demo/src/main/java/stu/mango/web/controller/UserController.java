@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +21,16 @@ import stu.mango.bean.User;
 import stu.mango.bean.UserQueryCondition;
 import stu.mango.exception.UserNotExistException;
 import stu.mango.security.core.properties.SecurityProperties;
+import stu.mango.security.rbac.dto.AdminInfo;
+import stu.mango.security.rbac.service.AdminService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController // 声明此 Controller 提供RestAPI, 在RestController中，相当于给所有的xxxMapping端点都添加了@ResponseBody注解，不返回视图，只返回数据。
 @RequestMapping("/user")
@@ -35,26 +40,45 @@ public class UserController {
 
     private final SecurityProperties securityProperties;
 
+    private final AdminService adminService;
+
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     public UserController(ProviderSignInUtils providerSignInUtils,
-                          SecurityProperties securityProperties) {
+                          SecurityProperties securityProperties,
+                          AdminService adminService) {
         this.providerSignInUtils = providerSignInUtils;
         this.securityProperties = securityProperties;
+        this.adminService = adminService;
     }
 
     @PostMapping("/register")
-    public void register(User user, HttpServletRequest request) {
+    public User register(User user, HttpServletRequest request) throws Exception {
+        Map<String, String[]> stringMap = request.getParameterMap();
+        stringMap.keySet().forEach(key -> logger.info(key + " = " + Arrays.toString(new String[]{Arrays.toString(stringMap.get(key))})));
+        
+        String requestType = request.getParameter("type");
+        logger.info("请求类型：" + requestType);
+
         // 无论是注册用户还是绑定用户动作，都会拿到一个用户唯一标识
-        String userId = user.getUsername();
+        String username = user.getUsername();
 
-        logger.info("用户" + userId + "请求注册");
+        logger.info("用户" + username + "请求注册");
 
-        // 将userId作为用户唯一标识插到user_connection表中，将user_info与 social_info 关联起来
-        providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+        if (StringUtils.equalsIgnoreCase("register", requestType)) {
+            AdminInfo info = new AdminInfo();
+            BeanUtils.copyProperties(user, info);
+            info.setRoleId((long) 3);
+            adminService.create(info);
+        } else if (StringUtils.equalsIgnoreCase("binding", requestType)) {
+            // 将userId作为用户唯一标识插到user_connection表中，将user_info与 social_info 关联起来
+            providerSignInUtils.doPostSignUp(username, new ServletWebRequest(request));
+        }
 
-        logger.info("用户" + userId + "注册成功");
+        logger.info("用户" + username + "注册成功");
+
+        return user;
     }
 
     @GetMapping("/me")

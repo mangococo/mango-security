@@ -36,6 +36,6 @@ public class BrowserBeanConfig {
     @Bean
     @ConditionalOnMissingBean(LogoutSuccessHandler.class)
     public LogoutSuccessHandler logoutSuccessHandler() {
-        return new MangoLogoutSuccessHandler(securityProperties.getBrowser().getSignUpUrl());
+        return new MangoLogoutSuccessHandler(securityProperties.getBrowser().getSignInUrl());
     }
 }
