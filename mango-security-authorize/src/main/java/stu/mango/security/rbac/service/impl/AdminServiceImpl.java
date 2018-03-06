@@ -96,6 +96,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public AdminInfo getInfo(String username) {
+		Admin admin = adminRepository.findByUsername(username);
+		AdminInfo info = new AdminInfo();
+		BeanUtils.copyProperties(admin, info);
+
+		return info;
+	}
+
+
+	@Override
 	public Page<AdminInfo> query(AdminCondition condition, Pageable pageable) {
 		Page<Admin> admins = adminRepository.findAll(new AdminSpec(condition), pageable);
 		return QueryResultConverter.convert(admins, AdminInfo.class, pageable);

@@ -3,25 +3,18 @@
  */
 package stu.mango.security.rbac.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * 管理员(用户)
@@ -32,10 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Admin implements UserDetails {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3521673552808391992L;
+	private static final long serialVersionUID = -539390321368101515L;
 	/**
 	 * 数据库主键
 	 */
@@ -59,7 +49,8 @@ public class Admin implements UserDetails {
 	/**
 	 * 用户的所有角色
 	 */
-	@OneToMany(mappedBy = "admin", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "admin", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@JsonBackReference
 	private Set<RoleAdmin> roles = new HashSet<>();
 	/**
 	 * 用户有权访问的所有url，不持久化到数据库
@@ -230,4 +221,16 @@ public class Admin implements UserDetails {
 		this.urls = urls;
 	}
 
+	@Override
+	public String toString() {
+		return "Admin{" +
+				"id=" + id +
+				", createdTime=" + createdTime +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", roles=" + roles +
+				", urls=" + urls +
+				", resourceIds=" + resourceIds +
+				'}';
+	}
 }

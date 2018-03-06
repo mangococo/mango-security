@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.repository.support;
 
 import java.util.ArrayList;

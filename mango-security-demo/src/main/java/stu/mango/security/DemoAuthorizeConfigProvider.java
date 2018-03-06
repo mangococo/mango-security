@@ -1,6 +1,7 @@
 package stu.mango.security;
 
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.stereotype.Component;
@@ -12,8 +13,7 @@ public class DemoAuthorizeConfigProvider implements AuthorizeConfigProvider {
 
     @Override
     public boolean config(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry authorizeRequests) {
-        authorizeRequests.anyRequest().access("@rbacService.hasPermission(request, authentication)");
-
-        return true;
+        authorizeRequests.antMatchers(HttpMethod.POST, "/user/register").permitAll();
+        return false;
     }
 }

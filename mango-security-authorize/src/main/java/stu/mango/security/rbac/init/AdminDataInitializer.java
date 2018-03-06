@@ -27,20 +27,24 @@ import stu.mango.security.rbac.repository.RoleRepository;
 @Component
 public class AdminDataInitializer extends AbstractDataInitializer {
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private final PasswordEncoder passwordEncoder;
+
+	private final RoleRepository roleRepository;
+
+	private final AdminRepository adminRepository;
+
+	private final RoleAdminRepository roleAdminRepository;
+
+	private final ResourceRepository resourceRepository;
 
 	@Autowired
-	private RoleRepository roleRepository;
-
-	@Autowired
-	private AdminRepository adminRepository;
-
-	@Autowired
-	private RoleAdminRepository roleAdminRepository;
-
-	@Autowired
-	protected ResourceRepository resourceRepository;
+	public AdminDataInitializer(PasswordEncoder passwordEncoder, RoleRepository roleRepository, AdminRepository adminRepository, RoleAdminRepository roleAdminRepository, ResourceRepository resourceRepository) {
+		this.passwordEncoder = passwordEncoder;
+		this.roleRepository = roleRepository;
+		this.adminRepository = adminRepository;
+		this.roleAdminRepository = roleAdminRepository;
+		this.resourceRepository = resourceRepository;
+	}
 
 	/*
 	 * (non-Javadoc)

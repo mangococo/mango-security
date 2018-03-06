@@ -1,27 +1,22 @@
-/**
- * 
- */
 package stu.mango.security.rbac.domain;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 角色用户关系表
- * 
- * @author zhailiang
- *
  */
 @Entity
-public class RoleAdmin {
+public class RoleAdmin implements Serializable{
+
+    private static final long serialVersionUID = 5388884463595299474L;
+
+    public RoleAdmin() {
+	}
 
 	/**
 	 * 数据库表主键
@@ -35,15 +30,18 @@ public class RoleAdmin {
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
 	private Date createdTime;
+
 	/**
 	 * 角色
 	 */
 	@ManyToOne
+	@JsonBackReference
 	private Role role;
 	/**
 	 * 管理员
 	 */
 	@ManyToOne
+	@JsonBackReference
 	private Admin admin;
 	/**
 	 * @return the id

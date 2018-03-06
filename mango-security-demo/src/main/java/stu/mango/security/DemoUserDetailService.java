@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.social.security.SocialUser;
@@ -14,7 +12,7 @@ import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DemoUserDetailService implements UserDetailsService, SocialUserDetailsService {
+public class DemoUserDetailService implements SocialUserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
 
@@ -23,14 +21,6 @@ public class DemoUserDetailService implements UserDetailsService, SocialUserDeta
     @Autowired
     public DemoUserDetailService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 根据用户名查找(数据库)用户信息
-        logger.info("表单登录 用户名：" + username);
-
-        return buildUser(username);
     }
 
     /**

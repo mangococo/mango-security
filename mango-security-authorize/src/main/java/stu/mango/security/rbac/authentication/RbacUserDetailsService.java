@@ -14,30 +14,26 @@ import org.springframework.transaction.annotation.Transactional;
 import stu.mango.security.rbac.domain.Admin;
 import stu.mango.security.rbac.repository.AdminRepository;
 
-/**
- * @author zhailiang
- *
- */
 @Component
 @Transactional
 public class RbacUserDetailsService implements UserDetailsService {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@Autowired
-	private AdminRepository adminRepository;
+	private final AdminRepository adminRepository;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.springframework.security.core.userdetails.UserDetailsService#
-	 * loadUserByUsername(java.lang.String)
-	 */
+	@Autowired
+	public RbacUserDetailsService(AdminRepository adminRepository) {
+		this.adminRepository = adminRepository;
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		logger.info("表单登录用户名:" + username);
 		Admin admin = adminRepository.findByUsername(username);
-		admin.getUrls();
+
+		logger.info(admin + "");
+
 		return admin;
 	}
 

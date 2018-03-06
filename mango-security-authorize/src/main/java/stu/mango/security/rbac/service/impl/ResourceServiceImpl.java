@@ -1,10 +1,9 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,18 +16,21 @@ import stu.mango.security.rbac.repository.AdminRepository;
 import stu.mango.security.rbac.repository.ResourceRepository;
 import stu.mango.security.rbac.service.ResourceService;
 
-/**
- * @author zhailiang
- *
- */
 @Service
 @Transactional
 public class ResourceServiceImpl implements ResourceService {
-	
+
+	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	private final ResourceRepository resourceRepository;
+
+	private final AdminRepository adminRepository;
+
 	@Autowired
-	private ResourceRepository resourceRepository;
-	@Autowired
-	private AdminRepository adminRepository;
+	public ResourceServiceImpl(ResourceRepository resourceRepository, AdminRepository adminRepository) {
+		this.resourceRepository = resourceRepository;
+		this.adminRepository = adminRepository;
+	}
 
 	/* (non-Javadoc)
 	 * @see com.idea.ams.service.ResourceService#getResourceTree(java.lang.Long, com.idea.ams.domain.Admin)
@@ -36,12 +38,13 @@ public class ResourceServiceImpl implements ResourceService {
 	@Override
 	public ResourceInfo getTree(Long adminId) {
 		Admin admin = adminRepository.findOne(adminId);
-		return resourceRepository.findByName("根节点").toTree(admin);
-	}
 
-	/* (non-Javadoc)
-	 * @see stu.mango.security.rbac.service.ResourceService#getInfo(java.lang.Long)
-	 */
+		Resource resource = resourceRepository.findByName("根节点");
+
+		logger.info(resource + "");
+
+		return resource.toTree(admin);
+	}
 	@Override
 	public ResourceInfo getInfo(Long id) {
 		Resource resource = resourceRepository.findOne(id);

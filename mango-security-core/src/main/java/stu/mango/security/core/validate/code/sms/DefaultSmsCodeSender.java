@@ -1,8 +1,16 @@
 package stu.mango.security.core.validate.code.sms;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DefaultSmsCodeSender implements SmsCodeSender {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Override
     public void send(String mobile, String code) {
-        System.out.println("向用户手机 [" + mobile + "]发送验证码[" + code + "]成功！");
+        logger.warn("请配置真实的短信验证码发送器 (SmsCodeSender)");
+
+        logger.info("向用户手机 [" + mobile + "]发送验证码[" + code + "]成功！");
     }
 }

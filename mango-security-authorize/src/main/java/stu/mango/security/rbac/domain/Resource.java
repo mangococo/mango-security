@@ -73,7 +73,7 @@ public class Resource {
 		BeanUtils.copyProperties(this, result);
 		Set<Long> resourceIds = admin.getAllResourceIds();
 		
-		List<ResourceInfo> children = new ArrayList<ResourceInfo>();
+		List<ResourceInfo> children = new ArrayList<>();
 		for (Resource child : getChilds()) {
 			if(StringUtils.equals(admin.getUsername(), "admin") || 
 					resourceIds.contains(child.getId())){
@@ -81,6 +81,7 @@ public class Resource {
 			}
 		}
 		result.setChildren(children);
+
 		return result;
 	}
 	

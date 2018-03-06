@@ -40,6 +40,12 @@ public interface AdminService {
 	 */
 	AdminInfo getInfo(Long id);
 	/**
+	 * 获取管理员详细信息
+	 * @param username
+	 * @return
+	 */
+	AdminInfo getInfo(String username);
+	/**
 	 * 分页查询管理员
 	 * @param condition
 	 * @param pageable 根据参数装入分页的信息：一是分页的信息（page、size），二是排序的信息。

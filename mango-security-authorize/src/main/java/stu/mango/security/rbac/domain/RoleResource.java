@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.domain;
 
 import java.util.Date;
@@ -12,13 +9,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.annotation.CreatedDate;
 
 /**
  * 角色资源关系表
- * 
- * @author zhailiang
- *
  */
 @Entity
 public class RoleResource {
@@ -39,6 +34,7 @@ public class RoleResource {
 	 * 角色
 	 */
 	@ManyToOne
+	@JsonBackReference
 	private Role role;
 	/**
 	 * 资源

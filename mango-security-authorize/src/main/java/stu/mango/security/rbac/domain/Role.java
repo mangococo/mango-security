@@ -3,19 +3,14 @@
  */
 package stu.mango.security.rbac.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.annotation.CreatedDate;
 
 /**
@@ -25,8 +20,9 @@ import org.springframework.data.annotation.CreatedDate;
  *
  */
 @Entity
-public class Role {
-	
+public class Role implements Serializable{
+
+	private static final long serialVersionUID = 4139498977082646704L;
 	/**
 	 * 数据库表主键
 	 */
@@ -47,12 +43,14 @@ public class Role {
 	/**
 	 * 角色拥有权限的资源集合
 	 */
-	@OneToMany(mappedBy = "role", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "role", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@JsonBackReference
 	private Set<RoleResource> resources  = new HashSet<>();
 	/**
 	 * 角色的用户集合
 	 */
-	@OneToMany(mappedBy = "role", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "role", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@JsonBackReference
 	private Set<RoleAdmin> admins = new HashSet<>();
 
 	/**
