@@ -7,9 +7,6 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.stereotype.Component;
 import stu.mango.security.core.authorize.AuthorizeConfigProvider;
 
-/**
- * @author zhailiang
- */
 @Component
 @Order
 public class RbacAuthorizeConfigProvider implements AuthorizeConfigProvider {

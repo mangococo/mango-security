@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service;
 
 
@@ -10,9 +7,6 @@ import java.util.List;
 
 /**
  * 角色服务
- * 
- * @author zhailiang
- *
  */
 public interface RoleService {
 	

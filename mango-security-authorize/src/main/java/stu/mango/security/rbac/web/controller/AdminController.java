@@ -10,10 +10,6 @@ import stu.mango.security.rbac.dto.AdminCondition;
 import stu.mango.security.rbac.dto.AdminInfo;
 import stu.mango.security.rbac.service.AdminService;
 
-/**
- * @author zhailiang
- *
- */
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

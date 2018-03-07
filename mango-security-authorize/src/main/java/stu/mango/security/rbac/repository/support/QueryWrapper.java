@@ -12,8 +12,6 @@ import javax.persistence.criteria.Root;
 
 /**
  * 包装用于构建JPA动态查询时所需的对象
- * 
- * @author jojo 2013-7-4 下午2:57:51
  */
 public class QueryWrapper<T> {
 

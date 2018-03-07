@@ -1,12 +1,5 @@
-/**
- * 
- */
 package stu.mango.security.rbac.web.controller.support;
 
-/**
- * @author zhailiang
- *
- */
 public class SimpleResponse {
 	
 	public SimpleResponse(Object content){

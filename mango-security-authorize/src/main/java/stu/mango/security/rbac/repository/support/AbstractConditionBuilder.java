@@ -12,13 +12,6 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 
-/**
- * <pre>
- *
- * <pre>
- * @author jojo 2014-8-12 下午2:57:22
- *
- */
 public abstract class AbstractConditionBuilder<T> {
 	
 	/**

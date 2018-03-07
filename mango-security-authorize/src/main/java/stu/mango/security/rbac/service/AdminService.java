@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service;
 
 import org.springframework.data.domain.Page;
@@ -10,9 +7,6 @@ import stu.mango.security.rbac.dto.AdminInfo;
 
 /**
  * 管理员服务
- * 
- * @author zhailiang
- *
  */
 public interface AdminService {
 

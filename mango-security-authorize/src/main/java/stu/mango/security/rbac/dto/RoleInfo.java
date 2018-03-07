@@ -1,12 +1,5 @@
-/**
- * 
- */
 package stu.mango.security.rbac.dto;
 
-/**
- * @author zhailiang
- *
- */
 public class RoleInfo {
 	
 	private Long id;

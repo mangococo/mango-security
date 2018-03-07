@@ -4,14 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.PropertyUtils;
 
-
-/**
- * <pre>
- *
- * <pre>
- * @author jojo 2014-8-12 下午2:58:10
- *
- */
 public class AbstractEventConditionBuilder<T, C> extends AbstractConditionBuilder<T> {
 
 	/**

@@ -16,9 +16,6 @@ import java.util.Set;
  * 需要控制权限的资源，以业务人员能看懂的name呈现.实际关联到一个或多个url上。
  * 
  * 树形结构。
- *
- * @author zhailiang
- *
  */
 @Entity
 public class Resource implements Serializable {

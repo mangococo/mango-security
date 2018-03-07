@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.repository.support;
 
 import java.util.ArrayList;
@@ -13,10 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-/**
- * @author zhailiang
- *
- */
 public class QueryResultConverter {
 	
 	private static Logger logger = LoggerFactory.getLogger(QueryResultConverter.class);

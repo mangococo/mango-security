@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -18,9 +15,6 @@ import java.util.function.Consumer;
 
 /**
  * 管理员(用户)
- * 
- * @author zhailiang
- *
  */
 @Entity
 public class Admin implements UserDetails {

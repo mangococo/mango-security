@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.dto;
 
 import stu.mango.security.rbac.domain.ResourceType;
@@ -8,10 +5,6 @@ import stu.mango.security.rbac.domain.ResourceType;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author zhailiang
- *
- */
 public class ResourceInfo {
 	
 	/**

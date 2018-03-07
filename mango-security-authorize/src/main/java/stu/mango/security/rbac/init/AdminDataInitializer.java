@@ -20,9 +20,6 @@ import stu.mango.security.rbac.repository.RoleRepository;
 
 /**
  * 默认的系统数据初始化器，永远在其他数据初始化器之前执行
- * 
- * @author zhailiang
- *
  */
 @Component
 public class AdminDataInitializer extends AbstractDataInitializer {

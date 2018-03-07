@@ -19,10 +19,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * @author zhailiang
- *
- */
 @Service
 @Transactional
 public class RoleServiceImpl implements RoleService {

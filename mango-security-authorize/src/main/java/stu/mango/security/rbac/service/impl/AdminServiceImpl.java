@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service.impl;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -22,10 +19,6 @@ import stu.mango.security.rbac.repository.spec.AdminSpec;
 import stu.mango.security.rbac.repository.support.QueryResultConverter;
 import stu.mango.security.rbac.service.AdminService;
 
-/**
- * @author zhailiang
- *
- */
 @Service
 @Transactional
 public class AdminServiceImpl implements AdminService {

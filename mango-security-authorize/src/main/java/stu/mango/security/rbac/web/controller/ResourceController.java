@@ -11,10 +11,6 @@ import stu.mango.security.rbac.dto.ResourceInfo;
 import stu.mango.security.rbac.service.ResourceService;
 import stu.mango.security.rbac.web.controller.support.SimpleResponse;
 
-/**
- * @author zhailiang
- *
- */
 @RestController
 @RequestMapping("/resource")
 public class ResourceController {

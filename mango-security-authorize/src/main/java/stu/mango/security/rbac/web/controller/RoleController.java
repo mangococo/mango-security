@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import stu.mango.security.rbac.dto.RoleInfo;
 import stu.mango.security.rbac.service.RoleService;
 
-/**
- * @author zhailiang
- *
- */
 @RestController
 @RequestMapping("/role")
 public class RoleController {

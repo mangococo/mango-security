@@ -8,8 +8,6 @@ import java.lang.reflect.Type;
 
 /**
  * 泛型工具
- * @author zhailiang
- *
  */
 public class GenericUtils {
 	

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service;
 
 import javax.servlet.http.HttpServletRequest;

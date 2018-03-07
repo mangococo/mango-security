@@ -15,9 +15,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 系统初始化器
- * 
- * @author zhailiang
- *
  */
 @Component
 public class SystemDataInitializer implements ApplicationListener<ContextRefreshedEvent>{

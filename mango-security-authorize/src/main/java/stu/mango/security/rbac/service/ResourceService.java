@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service;
 
 
@@ -8,9 +5,6 @@ import stu.mango.security.rbac.dto.ResourceInfo;
 
 /**
  * 资源服务
- * 
- * @author zhailiang
- *
  */
 public interface ResourceService {
 	

@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 抽象数据初始化器，所有的数据初始化器应该继承此类
  * 
- * @author zhailiang
- *
  */
 public abstract class AbstractDataInitializer implements DataInitializer {
 

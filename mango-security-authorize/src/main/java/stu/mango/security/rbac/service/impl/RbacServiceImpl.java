@@ -1,6 +1,3 @@
-/**
- * 
- */
 package stu.mango.security.rbac.service.impl;
 
 import org.apache.commons.lang.StringUtils;
@@ -13,10 +10,6 @@ import stu.mango.security.rbac.service.RbacService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
-/**
- * @author zhailiang
- *
- */
 @Component("rbacService")
 public class RbacServiceImpl implements RbacService {
 

@@ -15,9 +15,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 /**
  * 角色信息
- * 
- * @author zhailiang
- *
  */
 @Entity
 public class Role implements Serializable{
