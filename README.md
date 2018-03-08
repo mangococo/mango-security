@@ -5,9 +5,9 @@
 - 引入依赖(pom.xml)
 ```xml
 <dependency>
-	<groupId>com.imooc.security</groupId>
-	<artifactId>imooc-security-browser</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+    <groupId>stu.mango.security</groupId>
+    <artifactId>mango-security-browser</artifactId>
+    <version>${mango.security.version}</version>
 </dependency>
 ```
 
@@ -18,7 +18,7 @@
 - 如果需要记住我功能，需要创建数据库表(参见 db.sql)
 
 - 如果需要社交登录功能，需要以下额外的步骤
-<br/>1).配置appId和appSecret
+<br/>1).配置app-id和app-secret
 <br/>2).创建并配置用户注册页面，并实现注册服务(需要配置访问权限)，注意在服务中要调用ProviderSignInUtils的doPostSignUp方法。
 <br/>3).添加SocialUserDetailsService接口实现
 <br/>4).创建社交登录用的表 (参见 db.sql) 
